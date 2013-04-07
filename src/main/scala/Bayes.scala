@@ -53,6 +53,13 @@ trait Classifier {
 
 object Bayes extends Classifier {
 
+  def wordMetrics(word: String, category: String): Pair[Int, Int] =
+    ( wordOccurs(category, word), categoryCount(category) )
+
+  def singleWordProbability(word: String, category: String)= {
+    wordMetrics(word, category)
+  }
+
   /**
    * Train our classifier
    *
@@ -60,6 +67,7 @@ object Bayes extends Classifier {
   def train(category: String, text: String): Unit = {
     val tokens = new Tokenizer(text).tokenizeFiltered()
     tokens.foreach { word => incrementWordCount(category, word) }
+    incrementCategoryCount(category)
   }
 
   def classify(text: String) = {
