@@ -1,7 +1,15 @@
 package bayes
 
 import collection.mutable
+
 import scala.io.Source.{fromFile}
+
+trait NGramTokenizer {
+
+  def ngrams(n: Int, text: String) = sys.error("TODO")
+
+  def biGrams(text: String) = sys.error("TODO")
+}
 
 class Tokenizer(val text: String) {
 
@@ -23,8 +31,6 @@ class Tokenizer(val text: String) {
 
   def tokenizeFiltered(): wordList =
     filterStopWords(tokenize)
-
-  def ngramTokenizer(n: Int, text: String) = sys.error("TODO")
 }
 
 trait Classifier {
@@ -71,6 +77,10 @@ object Bayes extends Classifier {
   def wordMetrics(word: String, category: String): Pair[Double, Double] =
     ( featureCount(word, category), catCount(category) )
 
+  def categoryProbability() = sys.error("TODO")
+
+  def documentProbability() = sys.error("TODO")
+
   /**
    * The probability that an item is in a category
    * P(C|D) => featureCount / categoryCount
@@ -100,12 +110,22 @@ object Bayes extends Classifier {
     x / y
   }
 
+  /**
+   * The balanced weighted probability for a feature appearing in a category
+   *
+   */
   def weightedProbability(feature: String, category: String) = {
     val basicProbability = featureProbability(feature, category)
     val totals = featureTotals(feature)
     println(basicProbability)
     weightedAverage(1.0, 0.5, totals, basicProbability)
   }
+
+  /**
+   * What is the probability that a feature belongs in a given category?
+   *
+   */
+  def probability(feature: String, category: String) = sys.error("TODO")
 
   /**
    * Train our classifier
