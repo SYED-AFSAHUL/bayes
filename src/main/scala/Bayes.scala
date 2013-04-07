@@ -1,26 +1,33 @@
 package bayes
 
 import collection.mutable
+import scala.io.Source.{fromFile}
 
 class Tokenizer(val text: String) {
+
+  type wordList = List[String]
 
   val normalize = (text: String) => text.toLowerCase
 
   val words = (text: String) => text.split(" ")
 
-  def tokenize(): List[String] =
+  private def readStopWords() = fromFile("stopWords").getLines.toList
+
+  def filterStopWords(words: wordList): wordList = {
+    val stopWords = readStopWords()
+    words.filter { w => !stopWords.contains(w) }
+  }
+
+  def tokenize(): wordList =
     (words compose normalize)(text).toList
+
+  def tokenizeFiltered(): wordList =
+    filterStopWords(tokenize)
 
   def ngramTokenizer(n: Int, text: String) = sys.error("TODO")
 }
 
 trait Classifier {
-  def classify(text: String)
-}
-
-case class Word(category: String, word: String, count: Int)
-
-object Bayes extends Classifier {
 
   val wordCount = mutable.Map[(String, String), Int]()
 
@@ -36,11 +43,23 @@ object Bayes extends Classifier {
     wordCount.put((category, word), 1 + current)
   }
 
-  def wordAppearsInCategory(category: String, word: String): Int = {
+  def wordOccurs(category: String, word: String): Int = {
     wordCount.get((category,word)) match {
       case Some(v: Int) => v
       case None => 0
     }
+  }
+}
+
+object Bayes extends Classifier {
+
+  /**
+   * Train our classifier
+   *
+   */
+  def train(category: String, text: String): Unit = {
+    val tokens = new Tokenizer(text).tokenizeFiltered()
+    tokens.foreach { word => incrementWordCount(category, word) }
   }
 
   def classify(text: String) = {
