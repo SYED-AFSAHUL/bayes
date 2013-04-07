@@ -77,10 +77,17 @@ object Bayes extends Classifier {
   def wordMetrics(word: String, category: String): Pair[Double, Double] =
     ( featureCount(word, category), catCount(category) )
 
-  def categoryProbability(category: String): Double:q =
+  def categoryProbability(category: String): Double =
     catCount(category) / categoryCount.values.sum
 
-  def documentProbability() = sys.error("TODO")
+  def documentProbability(text: String, category: String) = {
+    val tokens = new Tokenizer(text).tokenizeFiltered()
+    var p = 1.0
+    tokens.foreach { term =>
+      p *= weightedProbability(term, category)
+    }
+    p
+  }
 
   /**
    * The probability that an item is in a category
@@ -126,7 +133,8 @@ object Bayes extends Classifier {
    * What is the probability that a feature belongs in a given category?
    *
    */
-  def probability(feature: String, category: String) = sys.error("TODO")
+  def probability(text: String, category: String) =
+    documentProbability(text, category) * categoryProbability(category)
 
   /**
    * Train our classifier
