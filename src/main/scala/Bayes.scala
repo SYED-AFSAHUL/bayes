@@ -6,7 +6,7 @@ import scala.io.Source.{fromFile}
 
 trait NGramTokenizer {
 
-  def ngrams(n: Int, text: String) = sys.error("TODO")
+  def nGrams(n: Int, text: String) = sys.error("TODO")
 
   def biGrams(text: String) = sys.error("TODO")
 }
@@ -77,7 +77,8 @@ object Bayes extends Classifier {
   def wordMetrics(word: String, category: String): Pair[Double, Double] =
     ( featureCount(word, category), catCount(category) )
 
-  def categoryProbability() = sys.error("TODO")
+  def categoryProbability(category: String): Double:q =
+    catCount(category) / categoryCount.values.sum
 
   def documentProbability() = sys.error("TODO")
 
