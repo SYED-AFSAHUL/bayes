@@ -122,12 +122,12 @@ object Bayes extends Classifier {
   }
 
   /** Which category does the text belong to? */
-  def classify(text: String) = {
+  def classify(text: String): Option[String] = {
     classifyCategories(text) match {
       case v@x::xs => v.maxBy(_._2) match {
-        case Pair(c,_) => c
+        case Pair(c,_) => Some(c)
       }
-      case _ => "Unkown"
+      case _ => None // If we match here there are no categories
     }
   }
 }

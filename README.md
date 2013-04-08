@@ -17,10 +17,10 @@ Bayes.train("sports", "I like playing basketball")
 Once we've trained our classifer we can use it to classify documents
 
 ```scala
-Bayes.classify("I love to play basketball")
+Bayes.classify("I love to play basketball").getOrElse("Unknown")
 // res6: String = "sports"
 
-Bayes.classify("When my dog barks he goes woof woof")
+Bayes.classify("When my dog barks he goes woof woof").getOrElse("Unknown")
 // res8: String = animals
 ```
 
