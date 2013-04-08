@@ -4,16 +4,25 @@ import collection.mutable
 
 trait Classifier {
 
-  val wordCount = mutable.Map[(String, String), Int]()
+  type Category = String
+
+  type Word = String
+
+  /**
+   * TODO we could move this to a durable store like mySQL
+   *
+   * A mutable map storing [
+   */
+  val wordCount = mutable.Map[(Category, Word), Int]()
 
   val categoryCount = mutable.Map[String, Int]()
 
-  def incrementCategoryCount(category: String) = {
+  def incrementCategoryCount(category: Category) = {
     val current = categoryCount.getOrElse(category, 0)
     categoryCount.put(category, 1+current)
   }
 
-  def incrementWordCount(category: String, word: String): Unit = {
+  def incrementWordCount(category: Category, word: Word): Unit = {
     val current = wordCount.get((category, word)).getOrElse(0)
     wordCount.put((category, word), 1 + current)
   }
@@ -22,7 +31,7 @@ trait Classifier {
    * The number of times a feature occurs in a category
    *
    */
-  def featureCount(feature: String, category: String): Double = {
+  def featureCount(feature: Word, category: Category): Double = {
     wordCount.get((category,feature)) match {
       case Some(v: Int) => v.toDouble
       case None => 0.0
@@ -33,12 +42,16 @@ trait Classifier {
    * The number of times a category occurs
    *
    */
-  def catCount(category: String): Double = {
+  def catCount(category: Category): Double = {
     categoryCount.get(category) match {
       case Some(v: Int) => v.toDouble
       case None => 0.0
     }
   }
+}
+
+trait BiGramClassifier {
+
 }
 
 object Bayes extends Classifier {
@@ -103,6 +116,11 @@ object Bayes extends Classifier {
    */
   def probability(text: String, category: String) =
     documentProbability(text, category) * categoryProbability(category)
+
+  def trainBiGrams(category: String, text: String): Unit = {
+    val bigrams = new Tokenizer(text).biGrams()
+    //bigrams.foreach { word => incrementWordCount(category, word) }
+  }
 
   /**
    * Train our classifier
