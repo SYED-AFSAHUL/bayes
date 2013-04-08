@@ -94,7 +94,6 @@ object Bayes extends Classifier {
   def weightedProbability(feature: String, category: String) = {
     val basicProbability = featureProbability(feature, category)
     val totals = featureTotals(feature)
-    println(basicProbability)
     weightedAverage(1.0, 0.5, totals, basicProbability)
   }
 
@@ -115,8 +114,20 @@ object Bayes extends Classifier {
     incrementCategoryCount(category)
   }
 
+  def classifyCategories(text: String): List[Pair[String, Double]] = {
+    val results = categoryCount.map { category =>
+      (category._1, documentProbability(text, category._1))
+    }
+    results.toList
+  }
+
+  /** Which category does the text belong to? */
   def classify(text: String) = {
-    val tokenizer = new Tokenizer(text)
-    tokenizer.tokenize
+    classifyCategories(text) match {
+      case v@x::xs => v.maxBy(_._2) match {
+        case Pair(c,_) => c
+      }
+      case _ => "Unkown"
+    }
   }
 }
