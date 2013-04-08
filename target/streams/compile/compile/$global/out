@@ -2,17 +2,17 @@
 [0m[[0mdebug[0m] [0mInitial source changes: [0m
 [0m[[0mdebug[0m] [0m	removed:Set()[0m
 [0m[[0mdebug[0m] [0m	added: Set()[0m
-[0m[[0mdebug[0m] [0m	modified: Set(/Users/owainlewis/Projects/scala/bayes/src/main/scala/Bayes.scala)[0m
-[0m[[0mdebug[0m] [0mRemoved products: Set(/Users/owainlewis/Projects/scala/bayes/target/scala-2.10.0/classes/bayes/Bayes.class, /Users/owainlewis/Projects/scala/bayes/target/scala-2.10.0/classes/bayes/Bayes$$anonfun$5.class, /Users/owainlewis/Projects/scala/bayes/target/scala-2.10.0/classes/bayes/Tokenizer$$anonfun$filterStopWords$1.class, /Users/owainlewis/Projects/scala/bayes/target/scala-2.10.0/classes/bayes/Bayes$$anonfun$documentProbability$1.class, /Users/owainlewis/Projects/scala/bayes/target/scala-2.10.0/classes/bayes/Bayes$$anonfun$train$1.class, /Users/owainlewis/Projects/scala/bayes/target/scala-2.10.0/classes/bayes/NGramTokenizer$class.class, /Users/owainlewis/Projects/scala/bayes/target/scala-2.10.0/classes/bayes/Classifier$$anonfun$2.class, /Users/owainlewis/Projects/scala/bayes/target/scala-2.10.0/classes/bayes/Classifier$class.class, /Users/owainlewis/Projects/scala/bayes/target/scala-2.10.0/classes/bayes/Tokenizer$$anonfun$3.class, /Users/owainlewis/Projects/scala/bayes/target/scala-2.10.0/classes/bayes/Classifier$$anonfun$1.class, /Users/owainlewis/Projects/scala/bayes/target/scala-2.10.0/classes/bayes/Classifier.class, /Users/owainlewis/Projects/scala/bayes/target/scala-2.10.0/classes/bayes/Bayes$.class, /Users/owainlewis/Projects/scala/bayes/target/scala-2.10.0/classes/bayes/NGramTokenizer.class, /Users/owainlewis/Projects/scala/bayes/target/scala-2.10.0/classes/bayes/Tokenizer.class, /Users/owainlewis/Projects/scala/bayes/target/scala-2.10.0/classes/bayes/Tokenizer$$anonfun$4.class)[0m
+[0m[[0mdebug[0m] [0m	modified: Set(/Users/owainlewis/Projects/scala/bayes/src/main/scala/Tokenizer.scala)[0m
+[0m[[0mdebug[0m] [0mRemoved products: Set()[0m
 [0m[[0mdebug[0m] [0mModified external sources: Set()[0m
 [0m[[0mdebug[0m] [0mModified binary dependencies: Set()[0m
-[0m[[0mdebug[0m] [0mInitial directly invalidated sources: Set(/Users/owainlewis/Projects/scala/bayes/src/main/scala/Bayes.scala)[0m
+[0m[[0mdebug[0m] [0mInitial directly invalidated sources: Set(/Users/owainlewis/Projects/scala/bayes/src/main/scala/Tokenizer.scala)[0m
 [0m[[0mdebug[0m] [0m[0m
 [0m[[0mdebug[0m] [0mSources indirectly invalidated by:[0m
-[0m[[0mdebug[0m] [0m	product: Set(/Users/owainlewis/Projects/scala/bayes/src/main/scala/Bayes.scala)[0m
+[0m[[0mdebug[0m] [0m	product: Set()[0m
 [0m[[0mdebug[0m] [0m	binary dep: Set()[0m
 [0m[[0mdebug[0m] [0m	external source: Set()[0m
-[0m[[0mdebug[0m] [0mInitially invalidated: Set(/Users/owainlewis/Projects/scala/bayes/src/main/scala/Bayes.scala)[0m
+[0m[[0mdebug[0m] [0mInitially invalidated: Set(/Users/owainlewis/Projects/scala/bayes/src/main/scala/Tokenizer.scala)[0m
 [0m[[0minfo[0m] [0mCompiling 1 Scala source to /Users/owainlewis/Projects/scala/bayes/target/scala-2.10.0/classes...[0m
 [0m[[0mdebug[0m] [0mInterfacing (CompilerInterface) with Scala compiler version 2.10.0[0m
 [0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
@@ -22,6 +22,8 @@
 [0m[[0mdebug[0m] [0m	/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jsfd.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar:/System/Library/Frameworks/JavaVM.framework/Frameworks/JavaRuntimeSupport.framework/Resources/Java/JavaRuntimeSupport.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/ui.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/laf.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/sunrsasign.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jsse.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jce.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/charsets.jar:/Users/owainlewis/.sbt/boot/scala-2.10.0/lib/scala-library.jar[0m
 [0m[[0mdebug[0m] [0m	-classpath[0m
 [0m[[0mdebug[0m] [0m	/Users/owainlewis/Projects/scala/bayes/target/scala-2.10.0/classes[0m
-[0m[[0mdebug[0m] [0m	/Users/owainlewis/Projects/scala/bayes/src/main/scala/Bayes.scala[0m
+[0m[[0mdebug[0m] [0m	/Users/owainlewis/Projects/scala/bayes/src/main/scala/Tokenizer.scala[0m
+[0m[[33mwarn[0m] [0mthere were 1 feature warnings; re-run with -feature for details[0m
+[0m[[33mwarn[0m] [0mone warning found[0m
 [0m[[0mdebug[0m] [0m	Invalidated direct: Set()[0m
 [0m[[0mdebug[0m] [0mIncrementally invalidated: Set()[0m
