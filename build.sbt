@@ -4,5 +4,10 @@ version := "0.1"
 
 scalaVersion := "2.10.0"
 
-libraryDependencies += "org.scalatest" % "scalatest_2.10" % "1.9.1" % "test"
+libraryDependencies ++= Seq(
+  "org.scalatest" % "scalatest_2.10" % "1.9.1" % "test",
+  "org.jsoup" %  "jsoup" % "1.6.1",
+  "com.typesafe.akka" %% "akka-actor" % "2.2-SNAPSHOT"
+)
+
 
