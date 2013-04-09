@@ -3,9 +3,7 @@ package bayes
 import scala.io.Source.{fromFile}
 
 trait NGramTokenizer {
-
   def nGrams(n: Int): List[List[String]]
-
 }
 
 class Tokenizer(val text: String) extends NGramTokenizer {

@@ -5,7 +5,6 @@ import collection.mutable
 trait Classifier {
 
   type Category = String
-
   type Word = String
 
   /**
@@ -50,11 +49,18 @@ trait Classifier {
   }
 }
 
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+/*
+ * Expand the classifier to handle bigrams
+ */
 trait BiGramClassifier {
 
 }
 
 object Bayes extends Classifier {
+
+  //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  /** General Probability */
 
   def wordMetrics(word: String, category: String): Pair[Double, Double] =
     ( featureCount(word, category), catCount(category) )
@@ -117,15 +123,13 @@ object Bayes extends Classifier {
   def probability(text: String, category: String) =
     documentProbability(text, category) * categoryProbability(category)
 
+  //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
   def trainBiGrams(category: String, text: String): Unit = {
     val bigrams = new Tokenizer(text).biGrams()
     //bigrams.foreach { word => incrementWordCount(category, word) }
   }
 
-  /**
-   * Train our classifier
-   *
-   */
   def train(category: String, text: String): Unit = {
     val tokens = new Tokenizer(text).tokenizeFiltered()
     tokens.foreach { word => incrementWordCount(category, word) }
