@@ -19,11 +19,8 @@ class Tokenizer(val text: String) extends NGramTokenizer {
   private val badChars = List(',', ';', '-', '?', '\n', '!') map (_.toString)
 
   /** Split the text into ngrams */
-  def nGrams(n: Int) = {
-    val t = tokenize()
-    t.sliding(n).toList
-  }
-
+  def nGrams(n: Int) = tokenize().sliding(n).toList
+  
   def biGrams() = nGrams(2)
 
   def stripPunctuation(text: String): String = {
