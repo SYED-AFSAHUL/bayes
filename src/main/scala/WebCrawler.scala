@@ -6,8 +6,6 @@ import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
 
-import akka.actor._
-
 // A Scala web crawler for finding training data
 
 object Crawler {
@@ -28,8 +26,4 @@ object Crawler {
 
   def bodyText(url: String): String =
     fetchNode(url, "body")
-}
-
-class WebCrawler() extends Actor {
-
 }
